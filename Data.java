@@ -1,21 +1,21 @@
 import javax.swing.*;
 
 class Data {
-        String n;
-        String a;
-        String pNum;
+        String name;
+        String address;
+        String phoneNumber;
 //parameterized constructor
-    public Data(String n, String a, String p) {
+    public Data(String name, String address, String phoneNumber) {
     	
-         this.n = n;
-		 this.a = a;
-		 this.pNum = p;
+         this.name = name;
+		 this.address = address;
+		 this.phoneNumber = phoneNumber;
        }
     
 //method for displaying person record on GUI 
     
     public void print( ) {
-          JOptionPane.showMessageDialog(null, "Name: " + n + "\n Address: " +a + "\n phone no: " + pNum);
+          JOptionPane.showMessageDialog(null, "Name: " + name + "\name Address: " +address + "\name phoneNumber no: " + phoneNumber);
     }
    
 }

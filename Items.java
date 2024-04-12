@@ -3,8 +3,8 @@ import javax.swing.*;
 import java.util.*;
 class Items {
 	
-	 boolean t1 , t2,t3;
-   ArrayList<Data> items;
+	boolean isFind;
+    ArrayList<Data> items;
    
    //constructor
     public Items ( ) {
@@ -15,73 +15,61 @@ class Items {
    
     public void addRecord( ) {
     	
-	   String n = JOptionPane.showInputDialog("Enter name");
+	   String name = JOptionPane.showInputDialog("Enter name");
 	   String add = JOptionPane.showInputDialog("Enter address");
-       String pNum = JOptionPane.showInputDialog("Enter phone no");
+       String phoneNumber = JOptionPane.showInputDialog("Enter phone no");
      
-        Data p = new Data(n, add, pNum);
+        Data person = new Data(name, add, phoneNumber);
+        
+        items.add(person);
+   }    
    
-         items.add(p);
-   }
-   
-   
+   //method to search for an item in an arraylist
+    public int searchItem( ArrayList<Data> items,String inputSearch){
+        for(int i = 0;i<items.size();i++){
+            if(items.get(i).name.equals(inputSearch)){
+                isFind = true;
+                items.get(i).print();
+                return i;
+            }
+        }
+            return -1;
+    }
+
     public void searchRecord ()
     {
-     if(items.isEmpty()==false){
-    	 
-    	String var = JOptionPane.showInputDialog("Enter Name To Search ");
-    	 
-       for (int i=0; i< items.size(); i++) 
-       {
-    	   
-         Data p = (Data)items.get(i);
-             if ( var.equals(p.n) ) 
-             { 
-            	     t1=true;
-            	 
-                      p.print();         
-                }  
-           
-      } // end for
+        isFind = false;
+
+        if(items.isEmpty()==false){
+            
+            String inputSearch = JOptionPane.showInputDialog("Enter Name To Search ");
+            searchItem(items, inputSearch);        
+
+            if(!isFind){            	 
+                JOptionPane.showMessageDialog(null, "Record Not found");
+            } 
+        } // end for
        
-          if(!(t1==true)){
-            	 
-            	 JOptionPane.showMessageDialog(null, "Record Not found");
-          }  
-          
-     }
-          else{
-        	  	
-          		JOptionPane.showMessageDialog(null, "....SOrry ther is No any record ....");
-          }
-          
-          
+        else{ 
+            JOptionPane.showMessageDialog(null, "....SOrry ther is No any record ....");
+        }  
     	
     } // end searchPerson
 
   //Delete the specific person from the record
     
     public void deleteRecord () {
-    	
-    	if(!(items.isEmpty())){
+    	isFind = false;
+    	if(!items.isEmpty()){
     		
-    	String var = JOptionPane.showInputDialog("Enter Name To Delete ");
+    	    String inputSearch = JOptionPane.showInputDialog("Enter Name To Delete ");
          	
-        for (int i=0; i< items.size(); i++)
-        {
-            Data p = (Data)items.get(i);
+            items.remove(searchItem(items, inputSearch));
             
-                if ( var.equals(p.n) )
-                {
-                	t3=true;
-                    items.remove(i);
-                    JOptionPane.showInputDialog("Record is Deleted ");
-                }
+            if(!(isFind==true)){
+                
+            JOptionPane.showMessageDialog(null, "Record Not found");
             }
-        if(!(t3==true)){
-    		
-   		 JOptionPane.showMessageDialog(null, "Record Not found");
-   	}
    	
         
     	}
@@ -99,43 +87,30 @@ class Items {
     		
     		JOptionPane.showMessageDialog(null, "....SOrry No record is Found....");
     	}
-    	
-       for (int i=0; i< items.size(); i++)
-         {
-             Data p = (Data)items.get(i);
-             
-             JOptionPane.showMessageDialog(null, " Record No:"+(i+1) +"\n\nName: " + p.n + "\n Address: " + p.a + "\n phone no: " + p.pNum);
-                 
-             }
-         }
+
+        {
+            int index =0;
+            for (var person : items)
+            {
+                JOptionPane.showMessageDialog(null, " Record No:"+(++index) +"\n\nName: " + person.name + "\name Address: " + person.address + "\name phone no: " + person.phoneNumber);
+            }
+        }
+        
+        }
     
    // Modify records. 
     public void modifyRecord(){
-    	if(items.isEmpty()==false){
+    	isFind = false;
+        if(items.isEmpty()==false){
     		
-    	String var = JOptionPane.showInputDialog("Enter Name To Modify ");
-    	for (int i=0; i< items.size(); i++)
-        {
-            Data p = (Data)items.get(i);
-            
-                if ( var.equals(p.n) )
-                {
-                	 t2=true;
-                	 p.print();
-                	
-                    items.remove(i);
-                    
-                    String name = JOptionPane.showInputDialog("Enter new Name Last one is : " + p.n);
-             	     String add = JOptionPane.showInputDialog("Enter new address Last one is : "+p.a);
-                    String pNum = JOptionPane.showInputDialog("Enter new phone no. last one is : "+p.pNum);
-                  
-                     Data p1 = new Data(name, add, pNum);
-                     items.add(p1);
-                     p1.print();
-                }
-            }
+    	String inputSearch = JOptionPane.showInputDialog("Enter Name To Modify ");
+    	var modifyItem = items.get(searchItem(items,inputSearch));
+        modifyItem.name = JOptionPane.showInputDialog("Enter new Name Last one is : " + modifyItem.name);
+        modifyItem.address = JOptionPane.showInputDialog("Enter new address Last one is : "+   modifyItem.address);
+        modifyItem.phoneNumber = JOptionPane.showInputDialog("Enter new phone no. last one   is : "+modifyItem.phoneNumber);
+        
     	
-    	if(!(t2==true)){
+    	if(!isFind){
     		
     		 JOptionPane.showMessageDialog(null, "Record Not found");
     	}
