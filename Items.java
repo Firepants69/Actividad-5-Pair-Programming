@@ -4,7 +4,6 @@ import java.util.*;
 
 class Items {
 
-    boolean isFind;
     ArrayList<Data> items;
 
     // constructor
@@ -28,25 +27,21 @@ class Items {
     public int searchItem(String inputSearch) {
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).name.equals(inputSearch)) {
-                isFind = true;
                 items.get(i).print();
                 return i;
             }
         }
+        JOptionPane.showMessageDialog(null, "Record Not found");
         return -1;
     }
 
     public void searchRecord() {
-        isFind = false;
 
         if (items.isEmpty() == false) {
 
             String inputSearch = JOptionPane.showInputDialog("Enter Name To Search ");
             searchItem(inputSearch);
 
-            if (!isFind) {
-                JOptionPane.showMessageDialog(null, "Record Not found");
-            }
         } // end for
 
         else {
@@ -58,17 +53,11 @@ class Items {
     // Delete the specific person from the record
 
     public void deleteRecord() {
-        isFind = false;
         if (!items.isEmpty()) {
 
             String inputSearch = JOptionPane.showInputDialog("Enter Name To Delete ");
 
             items.remove(searchItem(inputSearch));
-
-            if (!(isFind == true)) {
-
-                JOptionPane.showMessageDialog(null, "Record Not found");
-            }
 
         } else {
 
@@ -97,7 +86,6 @@ class Items {
 
     // Modify records.
     public void modifyRecord() {
-        isFind = false;
         if (items.isEmpty() == false) {
 
             String inputSearch = JOptionPane.showInputDialog("Enter Name To Modify ");
@@ -106,11 +94,6 @@ class Items {
             modifyItem.address = JOptionPane.showInputDialog("Enter new address Last one is : " + modifyItem.address);
             modifyItem.phoneNumber = JOptionPane
                     .showInputDialog("Enter new phone no. last one   is : " + modifyItem.phoneNumber);
-
-            if (!isFind) {
-
-                JOptionPane.showMessageDialog(null, "Record Not found");
-            }
 
         } else {
             JOptionPane.showMessageDialog(null, "....SOrry ther is No any record ....");
