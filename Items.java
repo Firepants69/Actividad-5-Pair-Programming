@@ -18,9 +18,9 @@ class Items {
         String add = JOptionPane.showInputDialog("Enter address");
         String phoneNumber = JOptionPane.showInputDialog("Enter phone no");
 
-        Data recordToAdd = new Data(name, add, phoneNumber);
+        Data itemToAdd = new Data(name, add, phoneNumber);
 
-        items.add(recordToAdd);
+        items.add(itemToAdd);
     }
 
     // method to search for an item in an arraylist
@@ -42,7 +42,7 @@ class Items {
 
         if (items.isEmpty() == false) {
 
-            var itemsToShow = filterByName(JOptionPane.showInputDialog("Enter Name To Search "));
+            ArrayList<Data> itemsToShow = filterByName(JOptionPane.showInputDialog("Enter Name To Search "));
             for (Data item : itemsToShow) {
                 item.print();
             }
@@ -54,7 +54,7 @@ class Items {
 
     } // end searchPerson
 
-    // Delete the specific recordToAdd from the record
+    // Delete the specific itemToAdd from the record
 
     public void deleteRecord() {
         if (!items.isEmpty()) {
@@ -89,9 +89,9 @@ class Items {
 
         {
             int index = 0;
-            for (var recordToAdd : items) {
-                JOptionPane.showMessageDialog(null, " Record No:" + (++index) + "\n\nName: " + recordToAdd.name
-                        + "\nName Address: " + recordToAdd.address + "\nName phone no: " + recordToAdd.phoneNumber);
+            for (Data itemToAdd : items) {
+                JOptionPane.showMessageDialog(null, " Record No:" + (++index) + "\n\nName: " + itemToAdd.name
+                        + "\nName Address: " + itemToAdd.address + "\nName phone no: " + itemToAdd.phoneNumber);
             }
         }
 
@@ -101,7 +101,7 @@ class Items {
     public void modifyRecord() {
         if (items.isEmpty() == false) {
 
-            var itemsToModify = filterByName(JOptionPane.showInputDialog("Enter Name To Modify "));
+            ArrayList<Data> itemsToModify = filterByName(JOptionPane.showInputDialog("Enter Name To Modify "));
 
             for (Data itemToModify : itemsToModify) {
                 int option = JOptionPane.showConfirmDialog(null,
