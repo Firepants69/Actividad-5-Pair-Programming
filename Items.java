@@ -99,5 +99,3 @@ class Items {
     }
 
 }// end of class
- // ayudame no puedo funcionar
- // ewrferfefr
