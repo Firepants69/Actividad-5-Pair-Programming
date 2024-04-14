@@ -49,7 +49,7 @@ class Items {
         } // end for
 
         else {
-            JOptionPane.showMessageDialog(null, "....SOrry ther is No any record ....");
+            JOptionPane.showMessageDialog(null, "....Sorry there is No any record ....");
         }
 
     } // end searchPerson
@@ -72,9 +72,10 @@ class Items {
                 }
             }
 
-        } else {
+        } 
+        else {
 
-            JOptionPane.showMessageDialog(null, "....SOrry ther is No any record ....");
+            JOptionPane.showMessageDialog(null, "....Sorry there is No any record ....");
         }
     }
 
@@ -84,14 +85,14 @@ class Items {
 
         if (items.size() == 0) {
 
-            JOptionPane.showMessageDialog(null, "....SOrry No record is Found....");
+            JOptionPane.showMessageDialog(null, "....Sorry No record is Found....");
         }
 
         {
             int index = 0;
             for (var person : items) {
                 JOptionPane.showMessageDialog(null, " Record No:" + (++index) + "\n\nName: " + person.name
-                        + "\name Address: " + person.address + "\name phone no: " + person.phoneNumber);
+                        + "\nName Address: " + person.address + "\nName phone no: " + person.phoneNumber);
             }
         }
 
@@ -120,7 +121,7 @@ class Items {
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(null, "....SOrry ther is No any record ....");
+            JOptionPane.showMessageDialog(null, "....Sorry there is No any record ....");
 
         }
 
