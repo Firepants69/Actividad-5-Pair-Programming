@@ -39,8 +39,7 @@ class Items {
 
         if (items.isEmpty() == false) {
 
-            String inputSearch = JOptionPane.showInputDialog("Enter Name To Search ");
-            searchItem(inputSearch);
+            searchItem(JOptionPane.showInputDialog("Enter Name To Search "));
 
         } // end for
 
@@ -55,9 +54,7 @@ class Items {
     public void deleteRecord() {
         if (!items.isEmpty()) {
 
-            String inputSearch = JOptionPane.showInputDialog("Enter Name To Delete ");
-
-            items.remove(searchItem(inputSearch));
+            items.remove(searchItem(JOptionPane.showInputDialog("Enter Name To Delete ")));
 
         } else {
 
@@ -88,8 +85,7 @@ class Items {
     public void modifyRecord() {
         if (items.isEmpty() == false) {
 
-            String inputSearch = JOptionPane.showInputDialog("Enter Name To Modify ");
-            var modifyItem = items.get(searchItem(inputSearch));
+            var modifyItem = items.get(searchItem(JOptionPane.showInputDialog("Enter Name To Modify ")));
             modifyItem.name = JOptionPane.showInputDialog("Enter new Name Last one is : " + modifyItem.name);
             modifyItem.address = JOptionPane.showInputDialog("Enter new address Last one is : " + modifyItem.address);
             modifyItem.phoneNumber = JOptionPane
