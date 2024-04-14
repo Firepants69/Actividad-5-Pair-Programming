@@ -24,23 +24,28 @@ class Items {
     }
 
     // method to search for an item in an arraylist
-    public int searchItem(String inputSearch) {
+    public ArrayList<Data> searchItem(String inputSearch) {
+        ArrayList<Data> newItems = new ArrayList<Data>();
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).name.equals(inputSearch)) {
-                items.get(i).print();
-                return i;
+                newItems.add(items.get(i));
             }
         }
-        JOptionPane.showMessageDialog(null, "Record Not found");
-        return -1;
+        if (newItems.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Record Not found");
+            return newItems;
+        }
+        return newItems;
     }
 
     public void searchRecord() {
 
         if (items.isEmpty() == false) {
 
-            searchItem(JOptionPane.showInputDialog("Enter Name To Search "));
-
+            var items = searchItem(JOptionPane.showInputDialog("Enter Name To Search "));
+            for (Data item : items) {
+                item.print();
+            }
         } // end for
 
         else {
@@ -53,8 +58,19 @@ class Items {
 
     public void deleteRecord() {
         if (!items.isEmpty()) {
+            var dataToDelete = searchItem(JOptionPane.showInputDialog("Enter Name To Delete "));
 
-            items.remove(searchItem(JOptionPane.showInputDialog("Enter Name To Delete ")));
+            for (Data person : dataToDelete) {
+                int option = JOptionPane.showConfirmDialog(null,
+                        "Name: " + person.name + "\n" +
+                                "name Address:" + person.address + "\n" +
+                                "name phone no:" + person.phoneNumber,
+                        "delete this element?",
+                        JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    items.remove(person);
+                }
+            }
 
         } else {
 
@@ -85,12 +101,24 @@ class Items {
     public void modifyRecord() {
         if (items.isEmpty() == false) {
 
-            var modifyItem = items.get(searchItem(JOptionPane.showInputDialog("Enter Name To Modify ")));
-            modifyItem.name = JOptionPane.showInputDialog("Enter new Name Last one is : " + modifyItem.name);
-            modifyItem.address = JOptionPane.showInputDialog("Enter new address Last one is : " + modifyItem.address);
-            modifyItem.phoneNumber = JOptionPane
-                    .showInputDialog("Enter new phone no. last one   is : " + modifyItem.phoneNumber);
+            var modifyItems = searchItem(JOptionPane.showInputDialog("Enter Name To Modify "));
 
+            for (Data modifyItem : modifyItems) {
+                int option = JOptionPane.showConfirmDialog(null,
+                        "Name: " + modifyItem.name + "\n" +
+                                "name Address:" + modifyItem.address + "\n" +
+                                "name phone no:" + modifyItem.phoneNumber,
+                        "edit this element?",
+                        JOptionPane.YES_NO_OPTION);
+                if (option == JOptionPane.YES_OPTION) {
+                    modifyItem.name = JOptionPane.showInputDialog("Enter new Name Last one is : " + modifyItem.name);
+                    modifyItem.address = JOptionPane
+                            .showInputDialog("Enter new address Last one is : " + modifyItem.address);
+                    modifyItem.phoneNumber = JOptionPane
+                            .showInputDialog("Enter new phone no. last one   is : " + modifyItem.phoneNumber);
+
+                }
+            }
         } else {
             JOptionPane.showMessageDialog(null, "....SOrry ther is No any record ....");
 
