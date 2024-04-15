@@ -4,7 +4,7 @@ import java.util.*;
 
 class Items {
 
-    ArrayList<Data> items;
+    private ArrayList<Data> items;
 
     // constructor
     public Items() {
@@ -24,7 +24,7 @@ class Items {
     }
 
     // method to search for an item in an arraylist
-    public ArrayList<Data> filterByName(String inputSearch) {
+    private ArrayList<Data> filterByName(String inputSearch) {
         ArrayList<Data> foundItems = new ArrayList<Data>();
         for (int i = 0; i < items.size(); i++) {
             if (items.get(i).name.equals(inputSearch)) {
