@@ -40,7 +40,7 @@ class Items {
 
     public void searchRecord() {
 
-        if (items.isEmpty() == false) {
+        if (!items.isEmpty()) {
 
             ArrayList<Data> itemsToShow = filterByName(JOptionPane.showInputDialog("Enter Name To Search "));
             for (Data item : itemsToShow) {
@@ -82,7 +82,7 @@ class Items {
 
     public void allRecord() {
 
-        if (items.size() == 0) {
+        if (items.isEmpty()) {
 
             JOptionPane.showMessageDialog(null, "....Sorry No record is Found....");
         }
@@ -99,7 +99,7 @@ class Items {
 
     // Modify records.
     public void modifyRecord() {
-        if (items.isEmpty() == false) {
+        if (!items.isEmpty()) {
 
             ArrayList<Data> itemsToModify = filterByName(JOptionPane.showInputDialog("Enter Name To Modify "));
 
