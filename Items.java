@@ -86,14 +86,19 @@ class Items {
 
         if (items.isEmpty()) {
 
-            JOptionPane.showMessageDialog(null, "....Sorry No record is Found....");
+            JOptionPane.showMessageDialog(
+                    null, "....Sorry No record is Found....");
         }
 
         {
             int index = 0;
             for (Data itemToAdd : items) {
-                JOptionPane.showMessageDialog(null, " Record No:" + (++index) + "\n\nName: " + itemToAdd.name
-                        + "\nName Address: " + itemToAdd.address + "\nName phone no: " + itemToAdd.phoneNumber);
+                JOptionPane.showMessageDialog(
+                        null,
+                        " Record No:" + (++index) +
+                                "\n\nName: " + itemToAdd.name
+                                + "\nName Address: " + itemToAdd.address
+                                + "\nName phone no: " + itemToAdd.phoneNumber);
             }
         }
 
