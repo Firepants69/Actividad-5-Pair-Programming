@@ -42,14 +42,16 @@ class Items {
 
         if (!items.isEmpty()) {
 
-            ArrayList<Data> itemsToShow = filterByName(JOptionPane.showInputDialog("Enter Name To Search "));
+            ArrayList<Data> itemsToShow = filterByName(
+                    JOptionPane.showInputDialog("Enter Name To Search "));
             for (Data item : itemsToShow) {
                 item.print();
             }
         } // end for
 
         else {
-            JOptionPane.showMessageDialog(null, "....Sorry there is No any record ....");
+            JOptionPane.showMessageDialog(
+                    null, "....Sorry there is No any record ....");
         }
 
     } // end searchPerson
